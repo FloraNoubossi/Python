@@ -1,0 +1,21 @@
+# Utiliser une image officielle Python comme image parent
+FROM python:3.9
+
+# Définir le répertoire de travail à /app
+WORKDIR /app
+
+# Copier le contenu du répertoire courant dans le conteneur à /app
+COPY . /app
+
+# Installer les paquets nécessaires spécifiés dans requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Exposer le port 80 pour le monde extérieur
+EXPOSE 80
+
+# Définir la variable d'environnement
+ENV NAME World
+
+# Exécuter app.py lorsque le conteneur se lance
+CMD ["python", "app.py"]
+
